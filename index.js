@@ -5,11 +5,14 @@ for(var i = 0; i < numOfDrum; i++){
         var buttonInnerHTML = this.innerHTML;
 
         makeSound(buttonInnerHTML);
+        buttonAnimation(buttonInnerHTML);
     });
 }
 
 document.addEventListener("keypress" , function(event){
     makeSound(event.key);
+    buttonAnimation(event.key);
+
 })
 
 // var audio = new Audio("sounds/tom-1.mp3");
@@ -58,4 +61,14 @@ function makeSound(key){
             console.log(this.innerHTML);
             break;
     }
+}
+
+
+function buttonAnimation(currenKey){
+    var activeButton = document.querySelector("."+ currenKey);
+    activeButton.classList.add("pressed");
+
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    }, 100);
 }
